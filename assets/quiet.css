@@ -12,11 +12,11 @@ html:root[data-theme="light"] {
 }
 
 html:root[data-theme="dark"] {
-  --bg-color: #191715;
-  --header-bg: #191715;
+  --bg-color: #1d1c1a;
+  --header-bg: #1d1c1a;
   --text-color: #e9e9e5;
   --muted-color: #909290;
-  --border-color: #38342f;
+  --border-color: #3a3835;
   --link-color: #d9787e;
   --link-hover-color: #e5989c;
 }
