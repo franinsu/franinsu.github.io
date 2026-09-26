@@ -75,6 +75,22 @@ body .home-bio p + p { margin-top: 1rem; }
 }
 body .main-grid > .card + .card { margin-top: 2.25rem; }
 
+/* Header uses the same styles: current page in regular text, other links and the
+   theme toggle in grey, darkening to regular text on hover. No underline, no fading. */
+body .site-header .page-link,
+body .site-header .page-link:visited,
+body .theme-toggle {
+  color: var(--muted-color);
+  opacity: 1;
+  text-decoration: none;
+}
+body .site-header .page-link[aria-current="page"],
+body .site-header .page-link:hover,
+body .theme-toggle:hover {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
 /* Bold: section headings and sub-headings. */
 body .site-header .site-title { font-weight: 600; }
 body .main-grid h2, body .blog-layout h2, body .main-grid h3 {
