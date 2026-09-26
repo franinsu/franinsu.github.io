@@ -7,8 +7,8 @@ html:root[data-theme="light"] {
   --text-color: #23252b;
   --muted-color: #75777c;
   --border-color: #e6e2d4;
-  --link-color: #9f3d43;
-  --link-hover-color: #852c32;
+  --link-color: #8c3036;
+  --link-hover-color: #6f2429;
 }
 
 html:root[data-theme="dark"] {
