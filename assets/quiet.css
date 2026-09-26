@@ -75,6 +75,11 @@ body .home-bio p + p { margin-top: 1rem; }
 }
 body .main-grid > .card + .card { margin-top: 2.25rem; }
 
+/* Links never underline, including on hover; the colour change is the only cue. */
+body a,
+body a:hover,
+body a:focus { text-decoration: none; }
+
 /* Header uses the same styles: current page in regular text, other links and the
    theme toggle in grey, darkening to regular text on hover. No underline, no fading. */
 body .site-header .page-link,
