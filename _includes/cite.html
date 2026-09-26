@@ -1,0 +1,6 @@
+{%- for reference in page.references -%}
+  {%- if reference.id == include.id -%}
+<a class="citation" href="#ref-{{ reference.id | slugify }}" aria-label="Reference {{ forloop.index }}: {{ reference.title | escape }}">[{{ forloop.index }}]</a>
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}

@@ -1,0 +1,122 @@
+/* Selected direction: plain text with colour (variant 4a of dev/minimal-lab), photo in a side column.
+   Source Sans 3 at one size, four text styles: regular, bold (headings), red (links and
+   paper titles), and grey (author names). No italics, no uppercase. */
+html:root[data-theme="light"] {
+  --bg-color: #fcfcfb;
+  --header-bg: #fcfcfb;
+  --text-color: #23252b;
+  --muted-color: #75777c;
+  --border-color: #e4e4df;
+  --link-color: #9f3d43;
+  --link-hover-color: #852c32;
+}
+
+html:root[data-theme="dark"] {
+  --bg-color: #151719;
+  --header-bg: #151719;
+  --text-color: #e9e9e5;
+  --muted-color: #909290;
+  --border-color: #333638;
+  --link-color: #d9787e;
+  --link-hover-color: #e5989c;
+}
+
+/* One family everywhere. */
+body,
+body h1, body h2, body h3, body h4,
+body .site-title,
+body .site-header .site-title,
+body .site-nav .page-link,
+body .theme-toggle {
+  font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* One size everywhere on the homepage and blog index. */
+body,
+body .main-grid,
+body .blog-layout,
+body .site-header .site-title,
+body .site-nav .page-link,
+body .theme-toggle,
+body .site-footer,
+body .home-bio .bio-lead,
+body .main-grid h2, body .blog-layout h2,
+body .main-grid h3,
+body .publication-title,
+body .publication p,
+body .publications-note,
+body .publications-more,
+body .post-dates,
+body .post-label {
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 1.6;
+}
+
+/* Layout: photo in a side column; the bio and every later section share the text column. */
+body .wrapper { max-width: 800px; }
+body header.site-header { border-bottom: 0; }
+body .site-header-inner { padding-top: 1.4rem; padding-bottom: 1.2rem; }
+body .site-footer { border-top: 0; }
+body .page-content { padding-top: 2rem; }
+body .main-grid { padding-top: 0.75rem; }
+body .home-intro-layout { display: flex; align-items: flex-start; gap: 2.5rem; }
+body .profile-photo img { width: 128px; height: 148px; border-radius: 2px; }
+body .home-bio p + p { margin-top: 1rem; }
+
+@media (min-width: 901px) {
+  /* 128px photo + 2.5rem gap: later sections start where the bio starts. */
+  body .main-grid > .card:not(.home-intro) { margin-left: 168px; }
+}
+
+@media (max-width: 768px) {
+  body .home-intro-layout { gap: 1.25rem !important; }
+  body .profile-photo img { width: 112px !important; height: 128px !important; }
+}
+body .main-grid > .card + .card { margin-top: 2.25rem; }
+
+/* Bold: section headings and sub-headings. */
+body .site-header .site-title { font-weight: 600; }
+body .main-grid h2, body .blog-layout h2, body .main-grid h3 {
+  text-transform: none;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+body .main-grid h3 { margin-top: 1rem; margin-bottom: 0.25rem; }
+
+/* Publications: red titles, grey authors, everything else regular. */
+body .publication + .publication { margin-top: 0.9rem; }
+body .publication-title { font-weight: 400; margin: 0; }
+body span.publication-title { color: var(--link-color); }
+body .publication .publication-authors,
+body .publications-note { color: var(--muted-color); }
+body .publication p,
+body .publication .publication-venue,
+body .publications-note,
+body .publications-more { opacity: 1; margin: 0; }
+body .publication-venue em, body .main-grid em { font-style: normal; }
+body .publications-note { margin-top: 0.9rem; }
+body .publications-note + .publications-more { margin-top: 0.5rem; }
+
+body .main-grid ul.compact-list { margin-left: 1rem; }
+body .main-grid .compact-list li + li { margin-top: 0.15rem; }
+
+/* Blog index and posts share the same restraint. */
+body .post-label { text-transform: none; font-weight: 600; }
+body .blog-layout .post-list-item > a { font-size: 16px; font-weight: 400; }
+body.layout-post .page-content { padding-top: 2.5rem; }
+body.layout-post .page-content > .wrapper { max-width: 680px; }
+body.layout-post .post-title { font-size: 1.5rem; font-weight: 600; line-height: 1.3; letter-spacing: 0; }
+body.layout-post .post-content { font-size: 17px; line-height: 1.75; }
+body.layout-post .post-content h2 { font-size: 1.15rem; margin-top: 2.2rem; }
+body .post-toc { margin-bottom: 2rem; }
+body .post-toc summary { font-weight: 400; }
+body .post-references { font-size: 0.875em; }
+
+@media (max-width: 600px) {
+  body .site-header-inner { padding: 0.75rem 62px 0.75rem 20px; }
+  body .site-nav { top: 10px; right: 15px; }
+  body .page-content > .wrapper { padding-right: 20px; padding-left: 20px; }
+  body .page-content { padding-top: 1.5rem; }
+  body.layout-post .page-content { padding-top: 1.75rem; }
+}

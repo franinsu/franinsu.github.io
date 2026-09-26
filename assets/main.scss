@@ -1,0 +1,385 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@import "minima";
+
+// Consistent spacing and a clear type hierarchy across the academic pages.
+.main-grid {
+  padding: 1.25rem 0 2rem;
+  line-height: 1.75;
+}
+
+.main-grid > .card + .card {
+  margin-top: 3rem;
+}
+
+.main-grid h2,
+.blog-layout h2 {
+  margin-bottom: 1.25rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.main-grid h3 {
+  margin: 1.75rem 0 0.65rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.home-intro-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.profile-photo {
+  flex: 0 0 auto;
+}
+
+.profile-photo img {
+  display: block;
+  width: 152px;
+  height: 152px;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+.home-bio {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.home-bio p {
+  margin: 0;
+}
+
+.home-bio p + p {
+  margin-top: 1.1rem;
+}
+
+.home-bio .bio-lead {
+  font-size: 1.125rem;
+  line-height: 1.65;
+}
+
+.publication + .publication {
+  margin-top: 1.5rem;
+}
+
+.publication-title {
+  display: inline-block;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.publication p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.publication .publication-venue {
+  margin-top: 0.15rem;
+  opacity: 0.78;
+}
+
+.publications-more {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.main-grid ul.compact-list {
+  margin-left: 1.1rem;
+}
+
+.main-grid .compact-list li + li {
+  margin-top: 0.55rem;
+}
+
+.blog-layout {
+  padding: 1.25rem 0 2rem;
+}
+
+.blog-layout .post-list-item {
+  margin-bottom: 2rem;
+}
+
+.blog-layout .post-list-item > a {
+  font-size: 1.15rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+// A quiet reading layout for mathematical posts.
+.layout-post .page-content {
+  padding: 3rem 0 4rem;
+}
+
+.layout-post .page-content > .wrapper {
+  max-width: 740px;
+  padding-right: 24px;
+  padding-left: 24px;
+}
+
+.layout-post .post-header {
+  margin-bottom: 1.75rem;
+}
+
+.layout-post .post-title {
+  font-size: clamp(1.7rem, 3.5vw, 2.25rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.post-dates,
+.post-author {
+  color: inherit;
+  opacity: 0.75;
+  font-size: 0.875rem;
+}
+
+.post-dates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  margin-bottom: 0;
+}
+
+.layout-post .post-dates {
+  margin-top: 1rem;
+}
+
+.post-labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-bottom: 0.65rem;
+}
+
+.post-label {
+  color: var(--link-color);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  line-height: 1.6;
+}
+
+.post-label-status {
+  color: inherit;
+  opacity: 0.75;
+}
+
+.post-list-item .post-dates {
+  margin-top: 0.5rem;
+}
+
+.post-toc {
+  margin: 0 0 2rem;
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+
+.post-toc summary {
+  padding: 0.35rem 0;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.post-toc summary::marker {
+  color: var(--link-color);
+  font-size: 0.75em;
+}
+
+.post-toc nav {
+  margin: 0.65rem 0 0;
+  padding-left: 1rem;
+  border-left: 1px solid var(--border-color);
+}
+
+.post-toc ol {
+  margin: 0;
+  list-style: none;
+}
+
+.post-toc ol ol {
+  margin-left: 1rem;
+}
+
+.post-toc a,
+.post-toc a:visited {
+  color: inherit;
+}
+
+.post-toc a:hover,
+.post-toc a:focus-visible {
+  color: var(--link-color);
+}
+
+.post-toc li {
+  padding: 0.2rem 0;
+}
+
+.post-toc a:focus-visible,
+.post-toc summary:focus-visible,
+.heading-permalink:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: 4px;
+}
+
+.post-content [id] {
+  scroll-margin-top: 6rem;
+}
+
+.heading-permalink {
+  margin-left: 0.5em;
+  font-size: 0.8em;
+  font-weight: normal;
+  text-decoration: none;
+  opacity: 0;
+}
+
+.post-content :is(h2, h3):hover .heading-permalink,
+.heading-permalink:focus-visible {
+  opacity: 1;
+}
+
+.post-references {
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.9em;
+}
+
+.post-references li,
+.footnotes li {
+  padding-left: 0.3rem;
+  margin-bottom: 0.85rem;
+}
+
+.post-references li:target,
+.footnotes li:target {
+  outline: 1px solid var(--link-color);
+  outline-offset: 6px;
+}
+
+// MathJax hides its visual tree from assistive technology. Equivalent links
+// outside that tree stay available to screen readers and keyboard users.
+.equation-accessible-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.equation-accessible-link:focus {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  width: auto;
+  height: auto;
+  padding: 0.6rem 1rem;
+  margin: 0;
+  overflow: visible;
+  clip-path: none;
+  z-index: 1100;
+  border: 1px solid var(--link-color);
+  border-radius: 4px;
+  background: var(--bg-color);
+  color: var(--link-color);
+  font-size: 1rem;
+  outline: 2px solid var(--link-color);
+  outline-offset: 3px;
+}
+
+.layout-post .post-content {
+  font-size: 18px;
+  line-height: 1.75;
+  min-width: 0;
+}
+
+.post-content p,
+.post-content li {
+  overflow-wrap: break-word;
+}
+
+.layout-post .post-content p {
+  margin-bottom: 1.25rem;
+}
+
+.layout-post .post-content h2,
+.layout-post .post-content h3 {
+  margin-top: 2.25rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+}
+
+.layout-post .post-content h2 {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.layout-post .post-content h3 {
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.post-content code {
+  color: inherit;
+  background: rgba(128, 128, 128, 0.12);
+  border-color: var(--border-color);
+}
+
+.post-content pre {
+  overflow-x: auto;
+  background: rgba(128, 128, 128, 0.08);
+  border-color: var(--border-color);
+}
+
+// Only the outer display container scrolls; MathJax owns all internal sizing.
+.post-content mjx-container[jax="CHTML"][display="true"] {
+  max-width: 100%;
+  min-width: 0 !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.6rem 0;
+  margin: 1.5rem 0;
+}
+
+@media (max-width: 600px) {
+  .main-grid,
+  .blog-layout {
+    padding-top: 0.5rem;
+  }
+
+  .main-grid > .card + .card {
+    margin-top: 2.25rem;
+  }
+
+  .home-bio .bio-lead {
+    font-size: 1.0625rem;
+  }
+
+  .layout-post .page-content {
+    padding-top: 2rem;
+  }
+
+  .layout-post .page-content > .wrapper {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .layout-post .post-content {
+    font-size: 16px;
+    line-height: 1.75;
+  }
+}

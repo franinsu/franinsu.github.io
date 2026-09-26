@@ -1,0 +1,12 @@
+{%- assign entry = include.post -%}
+{%- assign type_label = nil -%}
+{%- case entry.post_type -%}
+  {%- when 'research-note' -%}{%- assign type_label = 'Research note' -%}
+  {%- when 'tutorial' -%}{%- assign type_label = 'Tutorial' -%}
+{%- endcase -%}
+{%- if type_label or entry.status == 'work-in-progress' -%}
+<div class="post-labels">
+  {% if type_label %}<span class="post-label">{{ type_label }}</span>{% endif %}
+  {% if entry.status == 'work-in-progress' %}<span class="post-label post-label-status">Work in progress</span>{% endif %}
+</div>
+{%- endif -%}

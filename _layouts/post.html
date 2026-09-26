@@ -1,0 +1,27 @@
+---
+layout: default
+---
+<article class="post h-entry" itemscope itemtype="https://schema.org/BlogPosting">
+  <header class="post-header">
+    {% include post-labels.html post=page %}
+    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+    {% include post-dates.html post=page %}
+    {% if page.author %}<p class="post-author p-author" itemprop="author">{{ page.author | escape }}</p>{% endif %}
+  </header>
+
+  {% unless page.toc == false %}
+  <details class="post-toc" hidden>
+    <summary>On this page</summary>
+    <nav aria-label="Table of contents"><ol></ol></nav>
+  </details>
+  {% endunless %}
+
+  <div class="post-content e-content" itemprop="articleBody">
+    {{ content }}
+    {% include post-references.html %}
+  </div>
+
+  {% if site.disqus.shortname %}{% include disqus_comments.html %}{% endif %}
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>
+<script defer src="{{ '/assets/post-navigation.js' | relative_url }}"></script>

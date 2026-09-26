@@ -1,0 +1,39 @@
+title: "Francesco Insulla"
+subtitle: "PhD student in Computational and Mathematical Engineering, Stanford University"
+# Shown as text only (no mailto link) so the address is not trivially scraped.
+email_display: "franinsu [at] stanford [dot] edu"
+description: >-
+  Francesco Insulla, ICME PhD student at Stanford University,
+  advised by David Donoho and Andrea Montanari.
+baseurl: ""
+url: "https://franinsu.github.io"
+
+markdown: kramdown
+kramdown:
+  input: kramdown
+  math_engine: mathjax
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      math: true
+
+theme: minima
+plugins: []
+
+# Development-only files should not appear in the published site.
+exclude:
+  - research_state.md
+  - POSTS.md
+
+# Sass configuration to suppress deprecation warnings from theme
+sass:
+  quiet_deps: true
+  silence_deprecations:
+    - import
+    - global-builtin
+    - color-functions
+
+permalink: /:categories/:year/:month/:day/:title/

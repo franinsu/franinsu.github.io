@@ -1,0 +1,29 @@
+---
+layout: default
+title: "Blog"
+nav: blog
+subtitle: "Blog – notes on math, statistics, and learning theory"
+description: "Mathematical and machine learning blog by Francesco Insulla."
+permalink: /blog/
+---
+
+<div class="container blog-layout">
+  <section class="card">
+    <h2>All Posts</h2>
+    {% if site.posts.size == 0 %}
+    <p>No posts yet.</p>
+    {% else %}
+    <ul class="post-list">
+      {% for post in site.posts %}
+      <li class="post-list-item">
+        {% include post-labels.html post=post %}
+        <a href="{{ post.url | relative_url }}">
+          {{ post.title }}
+        </a>
+        {% include post-dates.html post=post %}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </section>
+</div>

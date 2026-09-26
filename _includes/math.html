@@ -1,0 +1,101 @@
+<!--
+  Kramdown protects $$ math and emits MathJax's \(...\) / \[...\] delimiters.
+  Number a display with \begin{equation} ... \label{eq:slug} ... \end{equation}.
+  Reference it in prose with $$\eqref{eq:slug}$$. Keep labels unique within a post.
+  Native label IDs keep #mjx-eqn%3Aeq%3Aslug links stable when numbers change.
+-->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['\\(', '\\)']],
+      displayMath: [['\\[', '\\]']],
+      processEscapes: true,
+      tags: 'ams',
+      useLabelIds: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    startup: {
+      pageReady() {
+        return MathJax.startup.defaultPageReady().then(() => {
+          const equationNames = new Map();
+          const accessibleTargets = new Map();
+          const lastAccessibleLink = new Map();
+
+          function addAccessibleLink(container, id, text) {
+            const targets = accessibleTargets.get(container) || new Set();
+            if (targets.has(id)) return;
+            targets.add(id);
+            accessibleTargets.set(container, targets);
+
+            const link = document.createElement('a');
+            link.className = 'equation-accessible-link';
+            link.href = '#' + encodeURIComponent(id);
+            link.textContent = text;
+            // Siblings are outside MathJax's aria-hidden visual mathematics.
+            const previous = lastAccessibleLink.get(container) || container;
+            previous.insertAdjacentElement('afterend', link);
+            lastAccessibleLink.set(container, link);
+          }
+
+          // Make the rendered equation numbers ordinary, shareable links.
+          document.querySelectorAll('mjx-labels [id^="mjx-eqn:"]').forEach(tag => {
+            const number = tag.firstElementChild;
+            if (!number || tag.querySelector('.equation-permalink')) return;
+
+            const container = tag.closest('mjx-container');
+            const tags = Array.from(container.querySelectorAll('mjx-labels [id^="mjx-eqn:"]'));
+            const mathmlLabels = container.querySelectorAll('mjx-assistive-mml mlabeledtr > mtd:first-child');
+            const mathmlLabel = mathmlLabels[tags.indexOf(tag)];
+            const name = (mathmlLabel && mathmlLabel.textContent.trim()) || tag.id.slice('mjx-eqn:'.length);
+            equationNames.set(tag.id, name);
+
+            const link = document.createElement('a');
+            link.className = 'equation-permalink';
+            link.href = '#' + encodeURIComponent(tag.id);
+            link.title = 'Link to this equation';
+            link.tabIndex = -1;
+            number.replaceWith(link);
+            link.appendChild(number);
+            addAccessibleLink(container, tag.id, 'Link to equation ' + name);
+          });
+
+          // Native \eqref links are also inside the aria-hidden visual tree.
+          document.querySelectorAll('mjx-container a[href]').forEach(link => {
+            if (!link.closest('[aria-hidden="true"]')) return;
+            let id;
+            try {
+              id = decodeURIComponent(new URL(link.href, window.location.href).hash.slice(1));
+            } catch (_) {
+              return;
+            }
+            if (!id.startsWith('mjx-eqn:')) return;
+            link.tabIndex = -1;
+            if (link.classList.contains('equation-permalink')) return;
+            const name = equationNames.get(id) || id.slice('mjx-eqn:'.length);
+            addAccessibleLink(link.closest('mjx-container'), id, 'Go to equation ' + name);
+          });
+
+          function scrollToEquation() {
+            let id;
+            try {
+              id = decodeURIComponent(window.location.hash.slice(1));
+            } catch (_) {
+              return;
+            }
+            if (!id.startsWith('mjx-eqn:')) return;
+            const target = document.getElementById(id);
+            const equation = target && target.closest('mjx-container');
+            if (equation) equation.scrollIntoView({ block: 'center', inline: 'nearest' });
+          }
+
+          // Fragment targets only exist after the asynchronous math render.
+          scrollToEquation();
+          window.addEventListener('hashchange', scrollToEquation);
+        });
+      }
+    }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>

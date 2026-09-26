@@ -1,0 +1,15 @@
+{% if page.references.size > 0 %}
+<section class="post-references" role="doc-bibliography" aria-labelledby="post-references-title">
+  <h2 id="post-references-title">References</h2>
+  <ol>
+    {% for reference in page.references %}
+    <li id="ref-{{ reference.id | slugify }}">
+      {% if reference.authors %}<span>{{ reference.authors | escape }}.</span>{% endif %}
+      <a href="{{ reference.url | escape }}">{{ reference.title | escape }}</a>.
+      {% if reference.venue %}<em>{{ reference.venue | escape }}</em>.{% endif %}
+      {% if reference.year %}<span>{{ reference.year | escape }}.</span>{% endif %}
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+{% endif %}

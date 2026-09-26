@@ -1,0 +1,13 @@
+# Local agent resume note; not part of the site.
+research_state.md
+
+# Jekyll build output and caches.
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+.DS_Store
+
+# Local preview settings.
+.claude/

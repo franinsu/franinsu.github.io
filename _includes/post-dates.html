@@ -1,0 +1,12 @@
+{%- assign entry = include.post -%}
+{%- assign date_format = site.minima.date_format | default: '%b %-d, %Y' -%}
+{%- assign published_day = entry.date | date: '%Y-%m-%d' -%}
+<p class="post-dates">
+  <span>Published <time class="dt-published" datetime="{{ entry.date | date_to_xmlschema }}"{% if include.post == page %} itemprop="datePublished"{% endif %}>{{ entry.date | date: date_format }}</time></span>
+  {%- if entry.last_modified_at -%}
+    {%- assign updated_day = entry.last_modified_at | date: '%Y-%m-%d' -%}
+    {%- if updated_day > published_day %}
+  <span>Updated <time class="dt-updated" datetime="{{ entry.last_modified_at | date_to_xmlschema }}"{% if include.post == page %} itemprop="dateModified"{% endif %}>{{ entry.last_modified_at | date: date_format }}</time></span>
+    {%- endif -%}
+  {%- endif %}
+</p>
