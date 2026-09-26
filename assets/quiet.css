@@ -91,14 +91,14 @@ body .theme-toggle:hover {
   text-decoration: none;
 }
 
-/* Bold: section headings and sub-headings. */
+/* Bold: section headings. Sub-headings (h3) are regular text. */
 body .site-header .site-title { font-weight: 600; }
 body .main-grid h2, body .blog-layout h2, body .main-grid h3 {
   text-transform: none;
   font-weight: 600;
   margin: 0 0 0.5rem;
 }
-body .main-grid h3 { margin-top: 1rem; margin-bottom: 0.25rem; }
+body .main-grid h3 { font-weight: 400; margin-top: 1rem; margin-bottom: 0.25rem; }
 
 /* Publications: red titles, grey authors, everything else regular. */
 body .publication + .publication { margin-top: 0.9rem; }
