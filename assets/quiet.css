@@ -2,11 +2,11 @@
    Source Sans 3 at one size, four text styles: regular, bold (headings), red (links and
    paper titles), and grey (author names). No italics, no uppercase. */
 html:root[data-theme="light"] {
-  --bg-color: #fcfcfb;
-  --header-bg: #fcfcfb;
+  --bg-color: #fcfaf1;
+  --header-bg: #fcfaf1;
   --text-color: #23252b;
   --muted-color: #75777c;
-  --border-color: #e4e4df;
+  --border-color: #e6e2d4;
   --link-color: #9f3d43;
   --link-hover-color: #852c32;
 }
